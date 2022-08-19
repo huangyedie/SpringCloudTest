@@ -55,11 +55,13 @@ spring:
       filter:
         enabled: false
 
-
-
-#spring.zipkin.enabled: true
-spring.zipkin.sender.type: web
-#设置采样率默认为 0.1 注意之前的版本是percentage 新版本中更换为 probability
-spring.sleuth.sampler.probability: 1
-spring.zipkin.base-url: http://localhost:9411/
-spring.zipkin.service.name: gateway
+  zipkin:
+    #enabled: true
+    sender:
+      type: web
+    base-url: http://localhost:9411/
+    service:
+      name: gateway
+  sleuth:
+    sampler:
+      probability: 1 #设置采样率默认为 0.1 注意之前的版本是percentage 新版本中更换为 probability
