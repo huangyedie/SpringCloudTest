@@ -29,4 +29,12 @@ spring:
   sleuth:
     sampler:
       probability: 1 #设置采样率默认为 0.1 注意之前的版本是percentage 新版本中更换为 probability
-
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    listener: # 这里配置了重试策略
+      direct:
+        retry:
+          enabled: true

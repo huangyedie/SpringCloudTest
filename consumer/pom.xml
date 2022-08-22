@@ -53,5 +53,11 @@
             <artifactId>spring-cloud-sleuth-zipkin</artifactId>
         </dependency>
         <!-- zipkin-->
+        <!--        rabbitMQ-->
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+        </dependency>
+        <!--   /     rabbitMQ-->
     </dependencies>
 </project>

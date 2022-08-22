@@ -68,13 +68,13 @@
             <!-- zipkin-->
 
             <!-- brave 埋点库-->
-            <dependency>
-                <groupId>io.zipkin.brave</groupId>
-                <artifactId>brave-bom</artifactId>
-                <version>${brave.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>io.zipkin.brave</groupId>-->
+            <!--                <artifactId>brave-bom</artifactId>-->
+            <!--                <version>${brave.version}</version>-->
+            <!--                <type>pom</type>-->
+            <!--                <scope>import</scope>-->
+            <!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 </project>
