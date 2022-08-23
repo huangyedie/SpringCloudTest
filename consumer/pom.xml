@@ -59,5 +59,20 @@
             <artifactId>spring-rabbit</artifactId>
         </dependency>
         <!--   /     rabbitMQ-->
+        <!-- Mybatis-plus时引入的配置start -->
+        <!--mybatis-plus依赖-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!--Mybatis-plus时引入配置结束-->
     </dependencies>
 </project>

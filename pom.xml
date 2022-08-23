@@ -22,6 +22,9 @@
         <spring-cloud.version>2020.0.2</spring-cloud.version>
         <spring-cloud-alibaba.version>2020.0.RC1</spring-cloud-alibaba.version>
         <brave.version>5.13.10</brave.version>
+        <mybatis.plus.version>3.4.2</mybatis.plus.version>
+        <mysql.version>8.0.30</mysql.version>
+        <druid.version>1.2.11</druid.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -49,23 +52,35 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Mybatis-plus时引入的配置start -->
+            <!--mybatis-plus依赖-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+                <!--                <type>pom</type>-->
+                <!--                <scope>import</scope>-->
+            </dependency>
 
+            <!--数据源驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+                <!--                <type>pom</type>-->
+                <!--                <scope>import</scope>-->
+            </dependency>
 
-            <!-- zipkin-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.springframework.cloud</groupId>-->
-            <!--                <artifactId>spring-cloud-starter-zipkin</artifactId>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.springframework.cloud</groupId>-->
-            <!--                <artifactId>spring-cloud-starter-sleuth</artifactId>-->
-            <!--            </dependency>-->
+            <!-- Druid引入 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+                <!--                <type>pom</type>-->
+                <!--                <scope>import</scope>-->
+            </dependency>
 
-            <!--            <dependency>-->
-            <!--                <groupId>org.springframework.cloud</groupId>-->
-            <!--                <artifactId>spring-cloud-sleuth-zipkin</artifactId>-->
-            <!--            </dependency>-->
-            <!-- zipkin-->
+            <!--Mybatis-plus时引入配置结束-->
 
             <!-- brave 埋点库-->
             <!--            <dependency>-->
