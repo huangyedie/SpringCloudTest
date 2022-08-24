@@ -3,19 +3,22 @@ package consumer.controllers;
 
 import brave.Tracer;
 import brave.propagation.TraceContext;
+import com.alibaba.cloud.commons.lang.StringUtils;
+import com.alibaba.fastjson.JSONObject;
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.fasterxml.jackson.databind.JsonSerializable;
 import consumer.entity.TestEntity;
 import consumer.feignClient.ProviderClient;
-
+import com.yanwentech.framework.contract.Result;
 import consumer.mapper.TestMapper;
+import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -56,8 +59,22 @@ public class ConsumerController {
         return "consumer testGateWay, i'm provider ,my port:" + port;
     }
 
-    @GetMapping("/testDb")
-    public TestEntity TestDb() {
+    @GetMapping("/testDb/{id}")
+    public Result<TestEntity> TestDb(@PathVariable("id") String id) {
+        //1576
+        if (StringUtils.isBlank(id)) {
+            System.out.println("id" + id);
+        }
+        TestEntity testEntityList = testMapper.selectById(id);
+        //IPage<TestEntity> page= testMapper.selectPage(new Page<>(1,10),null);
+
+        return Result.success(testEntityList);
+        //return "consumer testGateWay, i'm provider ,my port:" + port;
+    }
+
+    @PostMapping("/testDbPost")
+    public TestEntity TestDbPost(@RequestBody Object object) {
+        System.out.println(JSONObject.toJSON(object));
         TestEntity testEntityList = testMapper.selectById("1576");
         //IPage<TestEntity> page= testMapper.selectPage(new Page<>(1,10),null);
 

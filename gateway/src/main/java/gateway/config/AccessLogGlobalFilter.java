@@ -1,6 +1,7 @@
 package gateway.config;
 
 import brave.Tracer;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.common.utils.StringUtils;
 import org.apache.commons.lang.ObjectUtils;
 import gateway.model.GatewayLog;
@@ -150,7 +151,7 @@ public class AccessLogGlobalFilter implements GlobalFilter, Ordered {
      * @param gatewayLog
      */
     private void writeAccessLog(GatewayLog gatewayLog) {
-        log.info(gatewayLog.toString());
+        log.info(JSONObject.toJSON(gatewayLog).toString());
     }
 
     /**
