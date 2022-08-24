@@ -57,8 +57,8 @@ public class ConsumerController {
     }
 
     @GetMapping("/testDb")
-    public List<TestEntity> TestDb() {
-        List<TestEntity> testEntityList = testMapper.selectList(null);
+    public TestEntity TestDb() {
+        TestEntity testEntityList = testMapper.selectById("1576");
         //IPage<TestEntity> page= testMapper.selectPage(new Page<>(1,10),null);
 
         return testEntityList;
