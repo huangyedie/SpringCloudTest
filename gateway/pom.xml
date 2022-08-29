@@ -93,4 +93,61 @@
             <version>2.6</version>
         </dependency>
     </dependencies>
+
+    <!--    可写可不写-->
+    <!--    <profiles>-->
+    <!--        &lt;!&ndash;开发环境&ndash;&gt;-->
+    <!--        <profile>-->
+    <!--            <id>dev</id>-->
+    <!--            <properties>-->
+    <!--                <spring.profiles.active>dev</spring.profiles.active>-->
+    <!--            </properties>-->
+    <!--            <activation> &lt;!&ndash; 默认环境 &ndash;&gt;-->
+    <!--                <activeByDefault>true</activeByDefault>-->
+    <!--            </activation>-->
+    <!--        </profile>-->
+    <!--        &lt;!&ndash;测试环境&ndash;&gt;-->
+    <!--        <profile>-->
+    <!--            <id>test</id>-->
+    <!--            <properties>-->
+    <!--                <spring.profiles.active>test</spring.profiles.active>-->
+    <!--            </properties>-->
+    <!--        </profile>-->
+    <!--        &lt;!&ndash;生产环境&ndash;&gt;-->
+    <!--        <profile>-->
+    <!--            <id>prod</id>-->
+    <!--            <properties>-->
+    <!--                <spring.profiles.active>prod</spring.profiles.active>-->
+    <!--            </properties>-->
+    <!--        </profile>-->
+    <!--    </profiles>-->
+
+
+    <!--    <build>-->
+    <!--        <resources>-->
+    <!--            <resource>-->
+    <!--                &lt;!&ndash;                <directory>${project.basedir}/src/main/resources</directory>&ndash;&gt;-->
+    <!--                <directory>src/main/resources</directory>-->
+    <!--                <filtering>true</filtering>-->
+    <!--                <includes>-->
+    <!--                    <include>**/*.yml</include>-->
+    <!--                </includes>-->
+    <!--            </resource>-->
+    <!--        </resources>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.springframework.boot</groupId>-->
+    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--                <executions>-->
+    <!--                    <execution>-->
+    <!--                        <goals>-->
+    <!--                            <goal>repackage</goal>-->
+    <!--                        </goals>-->
+    <!--                    </execution>-->
+    <!--                </executions>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
+
+
 </project>

@@ -1,76 +1,7 @@
 server:
   port: 5000
-
 spring:
+  profiles:
+    active: dev
   application:
     name: gateway
-  cloud:
-    # 注册中心
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-    # 网关配置
-    gateway:
-      discovery:
-        locator:
-          enabled: false
-          lowerCaseServiceId: true
-      routes:
-        - id: provider
-          uri: lb://provider
-          predicates:
-            - Path=/provider/**
-          filters:
-            - StripPrefix=1
-        - id: consumer
-          uri: lb://consumer
-          predicates:
-            - Path=/consumer/**
-          filters:
-            - StripPrefix=1
-
-    # 流控配置
-    sentinel:
-      transport:
-        port: 8721
-        dashboard: localhost:8748
-        clientIp: 172.16.12.70
-      eager: true  #服务注启动，直接注册到dashboard
-      datasource:
-        ds:
-          nacos:
-            server-addr: localhost:8848
-            dataId: consumer
-            groupId: DEFAULT_GROUP
-            data-type: json
-            rule-type: flow
-        ds1:
-          nacos:
-            server-addr: localhost:8848
-            dataId: provider
-            groupId: DEFAULT_GROUP
-            data-type: json
-            rule-type: degrade
-      # 若通过 Spring Cloud Alibaba 接入请将 spring.cloud.sentinel.filter.enabled 配置项置为 false
-      filter:
-        enabled: false
-
-  zipkin:
-    #enabled: true
-    sender:
-      type: rabbit
-    base-url: http://localhost:9411/
-    service:
-      name: gateway
-  sleuth:
-    sampler:
-      probability: 1 #设置采样率默认为 0.1 注意之前的版本是percentage 新版本中更换为 probability
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-    listener: # 这里配置了重试策略
-      direct:
-        retry:
-          enabled: true
