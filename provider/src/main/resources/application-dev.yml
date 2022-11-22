@@ -1,6 +1,6 @@
 middleware:
-  address: 172.16.12.131
-
+#  address: 172.16.12.131
+  address: 127.0.0.1
 spring:
 
   cloud:
@@ -12,7 +12,7 @@ spring:
     #enabled: true
     sender:
       type: rabbit
-    base-url: http://localhost:9411/
+    base-url: ${middleware.address}:9411
     service:
       name: provider
   sleuth:
