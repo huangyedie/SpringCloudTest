@@ -1,0 +1,43 @@
+middleware:
+  address: 10.14.0.17
+#  address: 127.0.0.1
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.10.148.8:3306/yanwentest_hms?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: ywwl
+    password: '*49wHt@4Zpc40tbI'
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${middleware.address}:8848
+  #    sentinel:
+  #      transport:
+  #        port: 8719
+  #        dashboard: localhost:8748
+  #      eager: true
+
+  #feign:
+  #  sentinel:
+  #    enabled: true
+  #zipkin
+  zipkin:
+    #enabled: true
+    sender:
+      type: rabbit
+    base-url: ${middleware.address}:9411
+    service:
+      name: consumer
+  sleuth:
+    sampler:
+      probability: 1 #设置采样率默认为 0.1 注意之前的版本是percentage 新版本中更换为 probability
+  rabbitmq:
+    host: ${middleware.address}
+    port: 5672
+    username: guest
+    password: guest
+    listener: # 这里配置了重试策略
+      direct:
+        retry:
+          enabled: true

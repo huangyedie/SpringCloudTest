@@ -1,6 +1,6 @@
 middleware:
-#  address: 172.16.12.131
-  address: 127.0.0.1
+  address: 10.14.0.17
+#  address: 127.0.0.1
 spring:
 
   cloud:

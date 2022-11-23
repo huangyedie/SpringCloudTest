@@ -1,0 +1,6 @@
+consumer\entity\TestEntity.class
+consumer\controllers\ConsumerController.class
+consumer\constant\CONSUMER_MESSAGE.class
+consumer\ConsumerApplication.class
+consumer\mapper\TestMapper.class
+consumer\feignClient\ProviderClient.class

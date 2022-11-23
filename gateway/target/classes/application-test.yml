@@ -1,0 +1,74 @@
+middleware:
+  address: 10.14.0.17
+  # address: 127.0.0.1
+spring:
+  cloud:
+    # ????
+    nacos:
+      discovery:
+        server-addr: ${middleware.address}:8848
+    # ????
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+        - id: provider
+          uri: lb://provider
+          predicates:
+            - Path=/provider/**
+          filters:
+            - StripPrefix=1
+        - id: consumer
+          uri: lb://consumer
+          predicates:
+            - Path=/consumer/**
+          filters:
+            - StripPrefix=1
+
+    # ????
+    sentinel:
+      transport:
+        port: 8721
+        dashboard: ${middleware.address}:8858
+        clientIp: 127.0.0.1
+      eager: true  #???????????dashboard
+      datasource:
+        ds:
+          nacos:
+            server-addr: ${middleware.address}:8848
+            dataId: consumer
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+        ds1:
+          nacos:
+            server-addr: ${middleware.address}:8848
+            dataId: provider
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: degrade
+      # ??? Spring Cloud Alibaba ???? spring.cloud.sentinel.filter.enabled ????? false
+      filter:
+        enabled: false
+
+  zipkin:
+    #enabled: true
+    sender:
+      type: rabbit
+    base-url: ${middleware.address}:9411
+    service:
+      name: gateway
+  sleuth:
+    sampler:
+      probability: 1 #???????? 0.1 ????????percentage ??????? probability
+#  rabbitmq:
+#    host: ${middleware.address}
+#    port: 5672
+#    username: guest
+#    password: guest
+#    listener: # ?????????
+#      direct:
+#        retry:
+#          enabled: true

@@ -11,7 +11,7 @@
 
     <groupId>provider</groupId>
     <artifactId>provider</artifactId>
-    <version>${parent.version}</version>
+    <version>${project.parent.version}</version>
     <name>provider</name>
     <description>Demo project for Spring Boot</description>
     <properties>

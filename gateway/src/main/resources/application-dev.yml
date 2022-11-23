@@ -1,6 +1,6 @@
 middleware:
-#  address: 172.16.12.131
-  address: 127.0.0.1
+  address: 10.14.0.17
+ # address: 127.0.0.1
 spring:
   cloud:
     # ????
@@ -31,8 +31,8 @@ spring:
     sentinel:
       transport:
         port: 8721
-        dashboard: ${middleware.address}:8748
-        clientIp: ${middleware.address}
+        dashboard: ${middleware.address}:8858
+        clientIp: 127.0.0.1
       eager: true  #???????????dashboard
       datasource:
         ds:
@@ -63,12 +63,12 @@ spring:
   sleuth:
     sampler:
       probability: 1 #???????? 0.1 ????????percentage ??????? probability
-  rabbitmq:
-    host: ${middleware.address}
-    port: 5672
-    username: guest
-    password: guest
-    listener: # ?????????
-      direct:
-        retry:
-          enabled: true
+#  rabbitmq:
+#    host: ${middleware.address}
+#    port: 5672
+#    username: guest
+#    password: guest
+#    listener: # ?????????
+#      direct:
+#        retry:
+#          enabled: true
