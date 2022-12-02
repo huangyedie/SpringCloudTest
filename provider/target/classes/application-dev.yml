@@ -7,23 +7,27 @@ spring:
     nacos:
       discovery:
         server-addr: ${middleware.address}:8848
-
-  zipkin:
-    #enabled: true
-    sender:
-      type: rabbit
-    base-url: ${middleware.address}:9411
-    service:
-      name: provider
-  sleuth:
-    sampler:
-      probability: 1 #???????? 0.1 ????????percentage ??????? probability
-  rabbitmq:
-    host: ${middleware.address}
-    port: 5672
-    username: guest
-    password: guest
-    listener: # ?????????
-      direct:
-        retry:
-          enabled: true
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8858
+        eager: true
+#  zipkin:
+#    #enabled: true
+#    sender:
+#      type: rabbit
+#    base-url: ${middleware.address}:9411
+#    service:
+#      name: provider
+#  sleuth:
+#    sampler:
+#      probability: 1 #???????? 0.1 ????????percentage ??????? probability
+#  rabbitmq:
+#    host: ${middleware.address}
+#    port: 5672
+#    username: guest
+#    password: guest
+#    listener: # ?????????
+#      direct:
+#        retry:
+#          enabled: true

@@ -30,7 +30,7 @@ spring:
     # ????
     sentinel:
       transport:
-        port: 8721
+        port: 8719
         dashboard: ${middleware.address}:8858
         clientIp: 127.0.0.1
       eager: true  #???????????dashboard
@@ -53,16 +53,16 @@ spring:
       filter:
         enabled: false
 
-  zipkin:
-    #enabled: true
-    sender:
-      type: rabbit
-    base-url: ${middleware.address}:9411
-    service:
-      name: gateway
-  sleuth:
-    sampler:
-      probability: 1 #???????? 0.1 ????????percentage ??????? probability
+#  zipkin:
+#    #enabled: true
+#    sender:
+#      type: rabbit
+#    base-url: ${middleware.address}:9411
+#    service:
+#      name: gateway
+#  sleuth:
+#    sampler:
+#      probability: 1 #???????? 0.1 ????????percentage ??????? probability
 #  rabbitmq:
 #    host: ${middleware.address}
 #    port: 5672

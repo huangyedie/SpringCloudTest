@@ -1,8 +1,6 @@
 package consumer.controllers;
 
 
-import brave.Tracer;
-import brave.propagation.TraceContext;
 import com.alibaba.cloud.commons.lang.StringUtils;
 import com.alibaba.fastjson.JSONObject;
 
@@ -34,8 +32,8 @@ public class ConsumerController {
     @Value("${server.port}")
     String port;
 
-    @Resource
-    private Tracer tracer;
+//    @Resource
+//    private Tracer tracer;
     @Resource
     private TestMapper testMapper;
 
@@ -44,9 +42,9 @@ public class ConsumerController {
 
         try {
             //获取链路id
-            TraceContext a = tracer.currentSpan().context();
-            System.out.println("TrackId" + tracer.currentSpan().context().traceIdString());
-            System.out.println("SpanId" + tracer.currentSpan().context().spanIdString());
+//            TraceContext a = tracer.currentSpan().context();
+//            System.out.println("TrackId" + tracer.currentSpan().context().traceIdString());
+//            System.out.println("SpanId" + tracer.currentSpan().context().spanIdString());
             //log.info("1成为大师傅士大夫");
             return providerClient.hi("Test");
         } catch (Exception ex) {

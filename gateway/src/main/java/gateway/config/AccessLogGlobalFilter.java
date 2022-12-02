@@ -1,6 +1,5 @@
 package gateway.config;
 
-import brave.Tracer;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.nacos.common.utils.StringUtils;
 import org.apache.commons.lang.ObjectUtils;
@@ -52,8 +51,8 @@ import java.util.Map;
 @Component
 public class AccessLogGlobalFilter implements GlobalFilter, Ordered {
 
-    @Resource
-    private Tracer tracer;
+//    @Resource
+//    private Tracer tracer;
 
     private final List<HttpMessageReader<?>> messageReaders = HandlerStrategies.withDefaults().messageReaders();
 
@@ -75,7 +74,7 @@ public class AccessLogGlobalFilter implements GlobalFilter, Ordered {
         gatewayLog.setRequestTime(simpleDateFormat.format(new Date().getTime()));
         gatewayLog.setIp(clientIp);
         //添加链路ID
-        gatewayLog.setTrackId(tracer.currentSpan().context().traceIdString());
+//        gatewayLog.setTrackId(tracer.currentSpan().context().traceIdString());
 
         MediaType contentType = request.getHeaders().getContentType();
         if (MediaType.APPLICATION_FORM_URLENCODED.isCompatibleWith(contentType) || MediaType.APPLICATION_JSON.isCompatibleWith(contentType)) {

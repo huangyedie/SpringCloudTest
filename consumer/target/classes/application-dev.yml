@@ -12,32 +12,32 @@ spring:
     nacos:
       discovery:
         server-addr: ${middleware.address}:8848
-  #    sentinel:
-  #      transport:
-  #        port: 8719
-  #        dashboard: localhost:8748
-  #      eager: true
+    sentinel:
+       transport:
+         port: 8719
+         dashboard: localhost:8858
+         eager: true
 
   #feign:
   #  sentinel:
   #    enabled: true
   #zipkin
-  zipkin:
-    #enabled: true
-    sender:
-      type: rabbit
-    base-url: ${middleware.address}:9411
-    service:
-      name: consumer
-  sleuth:
-    sampler:
-      probability: 1 #设置采样率默认为 0.1 注意之前的版本是percentage 新版本中更换为 probability
-  rabbitmq:
-    host: ${middleware.address}
-    port: 5672
-    username: guest
-    password: guest
-    listener: # 这里配置了重试策略
-      direct:
-        retry:
-          enabled: true
+#  zipkin:
+#    #enabled: true
+#    sender:
+#      type: rabbit
+#    base-url: ${middleware.address}:9411
+#    service:
+#      name: consumer
+#  sleuth:
+#    sampler:
+#      probability: 1 #设置采样率默认为 0.1 注意之前的版本是percentage 新版本中更换为 probability
+#  rabbitmq:
+#    host: ${middleware.address}
+#    port: 5672
+#    username: guest
+#    password: guest
+#    listener: # 这里配置了重试策略
+#      direct:
+#        retry:
+#          enabled: true

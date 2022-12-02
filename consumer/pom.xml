@@ -43,28 +43,30 @@
         </dependency>
         <!--        /负载均衡-->
 
+        <!--        限流依赖-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <!-- /        限流依赖-->
+        <!--        &lt;!&ndash; zipkin&ndash;&gt;-->
         <!--        <dependency>-->
-        <!--            <groupId>com.alibaba.cloud</groupId>-->
-        <!--            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-sleuth</artifactId>-->
         <!--        </dependency>-->
 
-        <!-- zipkin-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-sleuth-zipkin</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash; zipkin&ndash;&gt;-->
+        <!--        &lt;!&ndash;        rabbitMQ&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.amqp</groupId>-->
+        <!--            <artifactId>spring-rabbit</artifactId>-->
+        <!--        </dependency>-->
+        <!--        &lt;!&ndash;   /     rabbitMQ&ndash;&gt;-->
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-        </dependency>
-        <!-- zipkin-->
-        <!--        rabbitMQ-->
-        <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-rabbit</artifactId>
-        </dependency>
-        <!--   /     rabbitMQ-->
         <!-- Mybatis-plus时引入的配置start -->
         <!--mybatis-plus依赖-->
         <dependency>
@@ -95,4 +97,20 @@
 
         <!--Mybatis-plus时引入配置结束-->
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
